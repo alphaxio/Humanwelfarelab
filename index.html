@@ -1,0 +1,953 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Security & Social Protection Lab</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.7;
+            color: #1a1a1a;
+            font-weight: 400;
+        }
+        
+        :root {
+            --accent: #2563eb;
+            --accent-dark: #1e40af;
+            --text-light: #6b7280;
+            --border: #e5e7eb;
+        }
+        
+        header {
+            background: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--accent);
+            font-family: 'Playfair Display', serif;
+            letter-spacing: -0.5px;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.95) 0%, rgba(37, 99, 235, 0.95) 100%), 
+                        url('https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=1600&q=80') center/cover;
+            color: white;
+            padding: 8rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.9) 0%, rgba(37, 99, 235, 0.85) 100%);
+            z-index: 1;
+        }
+        
+        .hero > * {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.95;
+            line-height: 1.7;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 0.75rem 2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background: white;
+            color: var(--accent);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background: white;
+            color: var(--accent);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+        
+        .section {
+            margin-bottom: 6rem;
+        }
+        
+        .section-title {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            color: #111;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+        
+        .section-subtitle {
+            color: var(--text-light);
+            margin-bottom: 4rem;
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+        
+        .image-banner {
+            width: 100%;
+            height: 500px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 12px;
+            margin: 4rem 0;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+        
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+        
+        .image-card {
+            height: 350px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transition: transform 0.3s;
+        }
+        
+        .image-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+        
+        .image-card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+        }
+        
+        .image-card-overlay h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tiles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+        
+        .tile {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .tile:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+        
+        .tile-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .tile h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+        
+        .tile p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        .map-section {
+            background: #f9fafb;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        
+        .map-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            display: flex;
+            gap: 3rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .location {
+            text-align: center;
+        }
+        
+        .location-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .location h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .impact-stats {
+            background: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .stat {
+            padding: 1rem;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+        
+        .research-areas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .research-card {
+            background: #f9fafb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .research-card h3 {
+            color: #111;
+            margin-bottom: 0.75rem;
+            font-size: 1.2rem;
+        }
+        
+        .research-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+        
+        footer {
+            background: #1f2937;
+            color: white;
+            padding: 3rem 2rem 2rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .footer-section p, .footer-section a {
+            color: #9ca3af;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
+            color: #9ca3af;
+        }
+        
+        .page-content {
+            display: none;
+        }
+        
+        .page-content.active {
+            display: block;
+        }
+        
+        .back-link {
+            color: var(--accent);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .team-member {
+            text-align: center;
+            padding: 1.5rem;
+            background: #f9fafb;
+            border-radius: 8px;
+        }
+        
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: var(--accent);
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            font-weight: 700;
+        }
+        
+        .team-member h3 {
+            margin-bottom: 0.25rem;
+        }
+        
+        .team-member .role {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">FSSPL</div>
+            <ul class="nav-links">
+                <li><a href="#" onclick="showPage('home')">Home</a></li>
+                <li><a href="#" onclick="showPage('about')">About</a></li>
+                <li><a href="#" onclick="showPage('research')">Research</a></li>
+                <li><a href="#" onclick="showPage('people')">People</a></li>
+                <li><a href="#" onclick="showPage('partner')">Partner</a></li>
+                <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="home" class="page-content active">
+        <section class="hero">
+            <h1>Food Security & Social Protection Lab</h1>
+            <p>Our organization provides rigorous evidence about food assistance and social protection policies to help these policies improve the protection of low-income households from hunger, poverty, and nutritional risk in Nigeria and the United States.</p>
+            <div class="hero-buttons">
+                <a href="#" onclick="showPage('research')" class="btn btn-primary">Explore Research</a>
+                <a href="#" onclick="showPage('partner')" class="btn btn-secondary">Partner With Us</a>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="section">
+                <h2 class="section-title">What We Do</h2>
+                
+                <div class="image-banner" style="background-image: url('https://images.unsplash.com/photo-1593113598332-cd288d649433?w=1600&q=80');"></div>
+                
+                <div class="tiles">
+                    <div class="tile">
+                        <div class="tile-icon" style="background-image: url('https://cdn-icons-png.flaticon.com/512/2920/2920277.png');"></div>
+                        <h3>Policy Evaluation</h3>
+                        <p>Measure what works, for whom, and under what conditions using rigorous causal methods</p>
+                    </div>
+                    <div class="tile">
+                        <div class="tile-icon" style="background-image: url('https://cdn-icons-png.flaticon.com/512/3082/3082031.png');"></div>
+                        <h3>Food Assistance Programs</h3>
+                        <p>Improve access, adequacy, and targeting of SNAP, WIC, school meals, and emergency food programs</p>
+                    </div>
+                    <div class="tile">
+                        <div class="tile-icon" style="background-image: url('https://cdn-icons-png.flaticon.com/512/2488/2488762.png');"></div>
+                        <h3>Conditional Cash Transfers</h3>
+                        <p>Design and evaluate cash plus behavior-linked supports for vulnerable households</p>
+                    </div>
+                    <div class="tile">
+                        <div class="tile-icon" style="background-image: url('https://cdn-icons-png.flaticon.com/512/2972/2972531.png');"></div>
+                        <h3>Food Economics & Prices</h3>
+                        <p>Understand shocks, affordability, market dynamics, and inflation impacts</p>
+                    </div>
+                    <div class="tile">
+                        <div class="tile-icon" style="background-image: url('https://cdn-icons-png.flaticon.com/512/1046/1046784.png');"></div>
+                        <h3>Nutrition & Food Quality</h3>
+                        <p>Connect programs to diet quality, child nutrition, and health outcomes</p>
+                    </div>
+                    <div class="tile">
+                        <div class="tile-icon" style="background-image: url('https://cdn-icons-png.flaticon.com/512/3135/3135706.png');"></div>
+                        <h3>Resilience & Climate Shocks</h3>
+                        <p>Build household capacity to withstand climate and conflict-related food crises</p>
+                    </div>
+                </div>
+                
+                <div class="image-grid">
+                    <div class="image-card" style="background-image: url('https://images.unsplash.com/photo-1586201375761-83865001e31c?w=800&q=80');">
+                        <div class="image-card-overlay">
+                            <h3>Field Research</h3>
+                            <p>On-ground data collection and community engagement</p>
+                        </div>
+                    </div>
+                    <div class="image-card" style="background-image: url('https://images.unsplash.com/photo-1509099863731-ef4bff19e808?w=800&q=80');">
+                        <div class="image-card-overlay">
+                            <h3>Policy Analysis</h3>
+                            <p>Evidence-based program evaluation</p>
+                        </div>
+                    </div>
+                    <div class="image-card" style="background-image: url('https://images.unsplash.com/photo-1594322436404-5a0526db4d13?w=800&q=80');">
+                        <div class="image-card-overlay">
+                            <h3>Community Impact</h3>
+                            <p>Supporting vulnerable households</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="impact-stats">
+            <div class="container">
+                <div class="image-banner" style="background-image: url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1600&q=80'); height: 400px; margin-bottom: 4rem;"></div>
+                
+                <h2 class="section-title">Our Impact</h2>
+                <p class="section-subtitle">Translating research into policy briefs, program dashboards, and decision tools</p>
+                <div class="stats-grid">
+                    <div class="stat">
+                        <div class="stat-number">2</div>
+                        <div class="stat-label">Countries</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">8</div>
+                        <div class="stat-label">Research Areas</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">∞</div>
+                        <div class="stat-label">Impact Potential</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="map-section">
+            <div class="container">
+                <div class="image-grid">
+                    <div class="image-card" style="background-image: url('https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=800&q=80');">
+                        <div class="image-card-overlay">
+                            <h3>Markets in Nigeria</h3>
+                            <p>Understanding local food systems</p>
+                        </div>
+                    </div>
+                    <div class="image-card" style="background-image: url('https://images.unsplash.com/photo-1542838132-92c53300491e?w=800&q=80');">
+                        <div class="image-card-overlay">
+                            <h3>U.S. Food Programs</h3>
+                            <p>Evaluating assistance effectiveness</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <h2 class="section-title" style="margin-top: 4rem;">Where We Work</h2>
+                <p class="section-subtitle">Comparative learning across diverse contexts</p>
+                <div class="map-container">
+                    <div class="location">
+                        <div class="location-icon" style="background-image: url('https://cdn-icons-png.flaticon.com/512/5111/5111531.png');"></div>
+                        <h3>Nigeria</h3>
+                        <p style="color: #6b7280;">Food price volatility, poverty targeting, delivery constraints, rural livelihoods</p>
+                    </div>
+                    <div class="location">
+                        <div class="location-icon" style="background-image: url('https://cdn-icons-png.flaticon.com/512/5111/5111594.png');"></div>
+                        <h3>United States</h3>
+                        <p style="color: #6b7280;">SNAP/WIC policy, benefit adequacy, access barriers, diet quality</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="image-grid" style="margin: 4rem 0;">
+                <div class="image-card" style="background-image: url('https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=800&q=80');">
+                    <div class="image-card-overlay">
+                        <h3>Student Research</h3>
+                        <p>Hands-on learning opportunities</p>
+                    </div>
+                </div>
+                <div class="image-card" style="background-image: url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=80');">
+                    <div class="image-card-overlay">
+                        <h3>Capacity Building</h3>
+                        <p>Training the next generation</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="about" class="page-content">
+        <div class="container">
+            <a href="#" onclick="showPage('home')" class="back-link">← Back to Home</a>
+            
+            <div class="image-banner" style="background-image: url('https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=1600&q=80'); margin-bottom: 4rem;"></div>
+            
+            <h1 class="section-title">About the Lab</h1>
+            
+            <div class="image-grid" style="margin: 3rem 0;">
+                <div class="image-card" style="background-image: url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80');">
+                    <div class="image-card-overlay">
+                        <h3>Global Perspective</h3>
+                        <p>Cross-country comparative research</p>
+                    </div>
+                </div>
+                <div class="image-card" style="background-image: url('https://images.unsplash.com/photo-1474631245212-32dc3c8310c6?w=800&q=80');">
+                    <div class="image-card-overlay">
+                        <h3>Local Knowledge</h3>
+                        <p>Understanding community needs</p>
+                    </div>
+                </div>
+            </div>
+            
+            <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;">
+                The Food Security & Social Protection Lab is a research-to-policy lab focused on improving the effectiveness of food assistance and social protection programs for households most vulnerable to hunger and poverty. Our work sits at the intersection of food economics, nutrition, and public policy, with a commitment to generating actionable evidence for decision-makers.
+            </p>
+            <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;">
+                We study policies and programs such as food assistance, targeted subsidies, school feeding, emergency response, and conditional cash transfers, examining their impacts on food security, diet quality, and household financial resilience. The Lab works across Nigeria and the United States, enabling comparative learning across diverse contexts—rural and urban settings, different program delivery systems, and varied market conditions.
+            </p>
+            <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 3rem;">
+                We collaborate with government agencies, NGOs, and research partners to build evaluation strategies, strengthen monitoring systems, and translate findings into practical recommendations. Our approach combines rigorous causal methods with grounded program knowledge, ensuring our results are both credible and usable.
+            </p>
+            
+            <div class="image-banner" style="background-image: url('https://images.unsplash.com/photo-1593113598332-cd288d649433?w=1600&q=80'); height: 450px; margin: 4rem 0;"></div>
+            
+            <div class="image-grid" style="margin: 4rem 0;">
+                <div class="image-card" style="background-image: url('https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=800&q=80');">
+                    <div class="image-card-overlay">
+                        <h3>Community Engagement</h3>
+                    </div>
+                </div>
+                <div class="image-card" style="background-image: url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&q=80');">
+                    <div class="image-card-overlay">
+                        <h3>Research Excellence</h3>
+                    </div>
+                </div>
+                <div class="image-card" style="background-image: url('https://images.unsplash.com/photo-1593113646773-028c64a8f1b8?w=800&q=80');">
+                    <div class="image-card-overlay">
+                        <h3>Policy Impact</h3>
+                    </div>
+                </div>
+            </div>
+            
+            <h2 class="section-title" style="margin-top: 3rem;">Our Values</h2>
+            <div class="tiles">
+                <div class="tile">
+                    <h3>Equity</h3>
+                    <p>Centering the needs of vulnerable populations in all our work</p>
+                </div>
+                <div class="tile">
+                    <h3>Rigor</h3>
+                    <p>Applying the highest standards of causal inference and methods</p>
+                </div>
+                <div class="tile">
+                    <h3>Transparency</h3>
+                    <p>Sharing data, code, and methods to enable reproducibility</p>
+                </div>
+                <div class="tile">
+                    <h3>Local Partnership</h3>
+                    <p>Building capacity and collaborating with on-the-ground experts</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="research" class="page-content">
+        <div class="container">
+            <a href="#" onclick="showPage('home')" class="back-link">← Back to Home</a>
+            
+            <div class="image-banner" style="background-image: url('https://images.unsplash.com/photo-1551218808-94e220e084d2?w=1600&q=80');"></div>
+            
+            <h1 class="section-title">Research Areas</h1>
+            <p class="section-subtitle">Our work spans eight interconnected pillars</p>
+            
+            <div class="research-areas">
+                <div class="research-card">
+                    <h3>International Food Security & Hunger Measurement</h3>
+                    <p>Developing better metrics and understanding drivers of food insecurity across diverse contexts</p>
+                </div>
+                <div class="research-card">
+                    <h3>Policy Evaluation & Causal Inference</h3>
+                    <p>Using DiD, RDD, IV, propensity scores, and RCT partnerships to establish program impacts</p>
+                </div>
+                <div class="research-card">
+                    <h3>Food Assistance Programs</h3>
+                    <p>SNAP, WIC, school meals, emergency food distribution—access, adequacy, and outcomes</p>
+                </div>
+                <div class="research-card">
+                    <h3>Conditional Cash Transfers & Social Protection</h3>
+                    <p>Design, targeting, conditionality effects, and household behavioral responses</p>
+                </div>
+                <div class="research-card">
+                    <h3>Food Economics & Price Shocks</h3>
+                    <p>Inflation impacts, market access, trade policy, and household coping strategies</p>
+                </div>
+                <div class="research-card">
+                    <h3>Food & Nutrition Outcomes</h3>
+                    <p>Diet quality, child nutrition, maternal health, and program-nutrition linkages</p>
+                </div>
+                <div class="research-card">
+                    <h3>Food Quality & Safety</h3>
+                    <p>Contamination risk, standards enforcement, labeling, and consumer protection</p>
+                </div>
+                <div class="research-card">
+                    <h3>Resilience & Climate/Conflict Shocks</h3>
+                    <p>Building household capacity to withstand and recover from environmental and political disruptions</p>
+                </div>
+            </div>
+            
+            <div class="image-grid" style="margin: 4rem 0;">
+                <div class="image-card" style="background-image: url('https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=800&q=80');">
+                    <div class="image-card-overlay">
+                        <h3>Agricultural Systems</h3>
+                        <p>From farm to table research</p>
+                    </div>
+                </div>
+                <div class="image-card" style="background-image: url('https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&q=80');">
+                    <div class="image-card-overlay">
+                        <h3>Nutrition Science</h3>
+                        <p>Diet quality and health outcomes</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 4rem; padding: 2rem; background: #f9fafb; border-radius: 8px;">
+                <h2 class="section-title">Our Methods</h2>
+                <p style="margin-bottom: 1rem;">We employ rigorous quantitative and qualitative approaches:</p>
+                <ul style="list-style-position: inside; color: #6b7280; line-height: 2;">
+                    <li>Difference-in-Differences (DiD)</li>
+                    <li>Regression Discontinuity Design (RDD)</li>
+                    <li>Instrumental Variables (IV/TSIV)</li>
+                    <li>Propensity Score Matching</li>
+                    <li>RCT Partnerships</li>
+                    <li>Mixed Methods & Qualitative Research</li>
+                </ul>
+                <p style="margin-top: 1.5rem; font-weight: 600; color: var(--accent);">Reproducibility Commitment: We share code and data when possible to enable verification and learning.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="people" class="page-content">
+        <div class="container">
+            <a href="#" onclick="showPage('home')" class="back-link">← Back to Home</a>
+            
+            <div class="image-banner" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1600&q=80');"></div>
+            
+            <h1 class="section-title">Our Team</h1>
+            <p class="section-subtitle">Dedicated researchers advancing food security and social protection</p>
+            
+            <h2 style="margin-top: 3rem; margin-bottom: 1.5rem; font-size: 1.5rem;">Leadership</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-avatar">AB</div>
+                    <h3>Agboola Bello</h3>
+                    <p class="role">Director & Founder</p>
+                </div>
+            </div>
+            
+            <div class="image-banner" style="background-image: url('https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?w=1600&q=80'); height: 400px; margin: 4rem 0;"></div>
+            
+            <h2 style="margin-top: 3rem; margin-bottom: 1.5rem; font-size: 1.5rem;">Research Team</h2>
+            <div style="padding: 2rem; background: #f9fafb; border-radius: 8px; text-align: center;">
+                <p style="color: #6b7280;">Research assistants, graduate students, and collaborators</p>
+                <p style="color: #6b7280; margin-top: 0.5rem; font-size: 0.95rem;">(Team members to be added)</p>
+            </div>
+            
+            <div class="image-grid" style="margin: 4rem 0;">
+                <div class="image-card" style="background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&q=80');">
+                    <div class="image-card-overlay">
+                        <h3>Collaborative Research</h3>
+                        <p>Working together for impact</p>
+                    </div>
+                </div>
+                <div class="image-card" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80');">
+                    <div class="image-card-overlay">
+                        <h3>Team Excellence</h3>
+                        <p>Diverse expertise and perspectives</p>
+                    </div>
+                </div>
+            </div>
+            
+            <h2 style="margin-top: 3rem; margin-bottom: 1.5rem; font-size: 1.5rem;">Collaborators</h2>
+            <div style="padding: 2rem; background: #f9fafb; border-radius: 8px; text-align: center;">
+                <p style="color: #6b7280;">Partner organizations and research institutions</p>
+                <p style="color: #6b7280; margin-top: 0.5rem; font-size: 0.95rem;">(Partner network growing)</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="partner" class="page-content">
+        <div class="container">
+            <a href="#" onclick="showPage('home')" class="back-link">← Back to Home</a>
+            
+            <div class="image-banner" style="background-image: url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1600&q=80');"></div>
+            
+            <h1 class="section-title">Partner With Us</h1>
+            <p class="section-subtitle">Two clear pathways to collaboration</p>
+            
+            <div class="tiles">
+                <div class="tile">
+                    <div class="tile-icon" style="background-image: url('https://cdn-icons-png.flaticon.com/512/2645/2645897.png');"></div>
+                    <h3>For Governments & NGOs</h3>
+                    <p>We build evaluation strategies, learning agendas, and program dashboards to strengthen your evidence base and improve decision-making.</p>
+                </div>
+                <div class="tile">
+                    <div class="tile-icon" style="background-image: url('https://cdn-icons-png.flaticon.com/512/2902/2902643.png');"></div>
+                    <h3>For Donors & Foundations</h3>
+                    <p>Fund evidence-to-action projects that translate research into practical tools and policy recommendations.</p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 4rem; padding: 3rem; background: #f9fafb; border-radius: 8px;">
+                <h2 style="margin-bottom: 1.5rem;">Get Involved</h2>
+                <div style="display: grid; gap: 1.5rem;">
+                    <div style="padding: 1.5rem; background: white; border-radius: 6px;">
+                        <h3 style="color: var(--accent); margin-bottom: 0.5rem;">Student Opportunities</h3>
+                        <p style="color: #6b7280;">Research assistantships and internships available for graduate and advanced undergraduate students</p>
+                    </div>
+                    <div style="padding: 1.5rem; background: white; border-radius: 6px;">
+                        <h3 style="color: var(--accent); margin-bottom: 0.5rem;">Visiting Scholars</h3>
+                        <p style="color: #6b7280;">Host researchers and practitioners for collaborative research projects</p>
+                    </div>
+                    <div style="padding: 1.5rem; background: white; border-radius: 6px;">
+                        <h3 style="color: var(--accent); margin-bottom: 0.5rem;">Newsletter</h3>
+                        <p style="color: #6b7280;">Stay updated on our latest research, policy briefs, and events</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="contact" class="page-content">
+        <div class="container">
+            <a href="#" onclick="showPage('home')" class="back-link">← Back to Home</a>
+            
+            <div class="image-banner" style="background-image: url('https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1600&q=80');"></div>
+            
+            <h1 class="section-title">Contact Us</h1>
+            <p class="section-subtitle">Get in touch to discuss partnerships, collaborations, or research opportunities</p>
+            
+            <div style="max-width: 600px; margin: 2rem auto;">
+                <div style="padding: 2rem; background: #f9fafb; border-radius: 8px; margin-bottom: 2rem;">
+                    <h3 style="margin-bottom: 1rem;">General Inquiries</h3>
+                    <p style="color: #6b7280; margin-bottom: 0.5rem;"><strong>Email:</strong> contact@fsspl.org</p>
+                    <p style="color: #6b7280;"><strong>Director:</strong> Agboola Bello</p>
+                </div>
+                
+                <div style="padding: 2rem; background: #f9fafb; border-radius: 8px; margin-bottom: 2rem;">
+                    <h3 style="margin-bottom: 1rem;">Locations</h3>
+                    <p style="color: #6b7280; margin-bottom: 0.5rem;">🇳🇬 Nigeria</p>
+                    <p style="color: #6b7280;">🇺🇸 United States</p>
+                </div>
+                
+                <div style="padding: 2rem; background: #f9fafb; border-radius: 8px;">
+                    <h3 style="margin-bottom: 1rem;">Press Inquiries</h3>
+                    <p style="color: #6b7280;">For media requests, please contact: press@fsspl.org</p>
+                </div>
+            </div>
+            
+            <div class="image-grid" style="margin: 4rem 0;">
+                <div class="image-card" style="background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80');">
+                    <div class="image-card-overlay">
+                        <h3>Let's Connect</h3>
+                        <p>Reach out for partnerships</p>
+                    </div>
+                </div>
+                <div class="image-card" style="background-image: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80');">
+                    <div class="image-card-overlay">
+                        <h3>Visit Us</h3>
+                        <p>Nigeria & United States</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Food Security & Social Protection Lab</h4>
+                <p>Generating rigorous evidence on food assistance and social protection policies across Nigeria and the United States.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="#" onclick="showPage('about')">About</a>
+                <a href="#" onclick="showPage('research')">Research</a>
+                <a href="#" onclick="showPage('people')">People</a>
+                <a href="#" onclick="showPage('partner')">Partner</a>
+            </div>
+            <div class="footer-section">
+                <h4>Locations</h4>
+                <p>Nigeria</p>
+                <p>United States</p>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <p>Newsletter Signup</p>
+                <p>contact@fsspl.org</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Food Security & Social Protection Lab. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page-content').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
