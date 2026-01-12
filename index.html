@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Human Welfare Lab</title>
+    <title>Food Security & Social Protection Lab</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
@@ -23,6 +22,7 @@
         :root {
             --accent: #2563eb;
             --accent-dark: #1e40af;
+            --accent-light: #60a5fa;
             --text-light: #6b7280;
             --border: #e5e7eb;
         }
@@ -75,8 +75,8 @@
         }
         
         .hero {
-            background: linear-gradient(135deg, rgba(30, 64, 175, 0.95) 0%, rgba(37, 99, 235, 0.95) 100%), 
-                        url('https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=1600&q=80') center/cover;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.92) 0%, rgba(96, 165, 250, 0.88) 100%), 
+                        url('https://images.pexels.com/photos/3401479/pexels-photo-3401479.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover;
             color: white;
             padding: 8rem 2rem;
             text-align: center;
@@ -90,7 +90,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(30, 64, 175, 0.9) 0%, rgba(37, 99, 235, 0.85) 100%);
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.85) 0%, rgba(96, 165, 250, 0.75) 100%);
             z-index: 1;
         }
         
@@ -153,8 +153,19 @@
         }
         
         .btn-secondary:hover {
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
             color: var(--accent);
+        }
+        
+        .btn-accent {
+            background: var(--accent);
+            color: white;
+        }
+        
+        .btn-accent:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
         }
         
         .container {
@@ -241,14 +252,16 @@
             background: white;
             padding: 2.5rem;
             border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 20px rgba(37, 99, 235, 0.08);
             transition: all 0.3s;
             cursor: pointer;
+            border: 2px solid transparent;
         }
         
         .tile:hover {
             transform: translateY(-6px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+            box-shadow: 0 12px 30px rgba(37, 99, 235, 0.2);
+            border-color: var(--accent-light);
         }
         
         .tile-icon {
@@ -269,7 +282,7 @@
         }
         
         .map-section {
-            background: #f9fafb;
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
             padding: 4rem 2rem;
             text-align: center;
         }
@@ -336,10 +349,16 @@
         }
         
         .research-card {
-            background: #f9fafb;
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
             padding: 1.5rem;
             border-radius: 8px;
             border-left: 4px solid var(--accent);
+            transition: all 0.3s;
+        }
+        
+        .research-card:hover {
+            transform: translateX(4px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
         }
         
         .research-card h3 {
@@ -431,7 +450,7 @@
             width: 120px;
             height: 120px;
             border-radius: 50%;
-            background: var(--accent);
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
             margin: 0 auto 1rem;
             display: flex;
             align-items: center;
@@ -439,6 +458,13 @@
             font-size: 2.5rem;
             color: white;
             font-weight: 700;
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .team-avatar.photo {
+            font-size: 0;
         }
         
         .team-member h3 {
@@ -468,7 +494,7 @@
 <body>
     <header>
         <nav>
-            <div class="logo">Human Welfare Lab</div>
+            <div class="logo">HWL</div>
             <ul class="nav-links">
                 <li><a href="#" onclick="showPage('home')">Home</a></li>
                 <li><a href="#" onclick="showPage('about')">About</a></li>
@@ -493,8 +519,9 @@
         <div class="container">
             <div class="section">
                 <h2 class="section-title">What We Do</h2>
+                <p class="section-subtitle" style="text-align: center; max-width: 700px; margin-left: auto; margin-right: auto;">Transforming evidence into action, building stronger, more resilient food systems that protect the most vulnerable</p>
                 
-                <div class="image-banner" style="background-image: url('https://images.unsplash.com/photo-1593113598332-cd288d649433?w=1600&q=80');"></div>
+                <div class="image-banner" style="background-image: url('https://images.pexels.com/photos/33489786/pexels-photo-33489786.jpeg?auto=compress&cs=tinysrgb&w=1600');"></div>
                 
                 <div class="tiles">
                     <div class="tile">
@@ -530,22 +557,22 @@
                 </div>
                 
                 <div class="image-grid">
-                    <div class="image-card" style="background-image: url('https://images.unsplash.com/photo-1586201375761-83865001e31c?w=800&q=80');">
+                    <div class="image-card" style="background-image: url('https://images.pexels.com/photos/7108815/pexels-photo-7108815.jpeg?auto=compress&cs=tinysrgb&w=800');">
                         <div class="image-card-overlay">
                             <h3>Field Research</h3>
                             <p>On-ground data collection and community engagement</p>
                         </div>
                     </div>
-                    <div class="image-card" style="background-image: url('https://images.unsplash.com/photo-1509099863731-ef4bff19e808?w=800&q=80');">
+                    <div class="image-card" style="background-image: url('https://images.pexels.com/photos/15424312/pexels-photo-15424312.jpeg?auto=compress&cs=tinysrgb&w=800');">
                         <div class="image-card-overlay">
-                            <h3>Policy Analysis</h3>
-                            <p>Evidence-based program evaluation</p>
+                            <h3>Food Assistance</h3>
+                            <p>Supporting vulnerable households</p>
                         </div>
                     </div>
-                    <div class="image-card" style="background-image: url('https://images.unsplash.com/photo-1594322436404-5a0526db4d13?w=800&q=80');">
+                    <div class="image-card" style="background-image: url('https://images.pexels.com/photos/8430186/pexels-photo-8430186.jpeg?auto=compress&cs=tinysrgb&w=800');">
                         <div class="image-card-overlay">
-                            <h3>Community Impact</h3>
-                            <p>Supporting vulnerable households</p>
+                            <h3>Community Programs</h3>
+                            <p>Building food security together</p>
                         </div>
                     </div>
                 </div>
@@ -554,10 +581,10 @@
 
         <div class="impact-stats">
             <div class="container">
-                <div class="image-banner" style="background-image: url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1600&q=80'); height: 400px; margin-bottom: 4rem;"></div>
+                <div class="image-banner" style="background-image: url('https://images.pexels.com/photos/3213283/pexels-photo-3213283.jpeg?auto=compress&cs=tinysrgb&w=1600'); height: 400px; margin-bottom: 4rem;"></div>
                 
                 <h2 class="section-title">Our Impact</h2>
-                <p class="section-subtitle">Translating research into policy briefs, program dashboards, and decision tools</p>
+                <p class="section-subtitle">Translating research into policy briefs, program dashboards, and decision tools that create lasting change</p>
                 <div class="stats-grid">
                     <div class="stat">
                         <div class="stat-number">2</div>
@@ -578,13 +605,13 @@
         <div class="map-section">
             <div class="container">
                 <div class="image-grid">
-                    <div class="image-card" style="background-image: url('https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=800&q=80');">
+                    <div class="image-card" style="background-image: url('https://images.pexels.com/photos/14863397/pexels-photo-14863397.jpeg?auto=compress&cs=tinysrgb&w=800');">
                         <div class="image-card-overlay">
                             <h3>Markets in Nigeria</h3>
                             <p>Understanding local food systems</p>
                         </div>
                     </div>
-                    <div class="image-card" style="background-image: url('https://images.unsplash.com/photo-1542838132-92c53300491e?w=800&q=80');">
+                    <div class="image-card" style="background-image: url('https://images.pexels.com/photos/4968393/pexels-photo-4968393.jpeg?auto=compress&cs=tinysrgb&w=800');">
                         <div class="image-card-overlay">
                             <h3>U.S. Food Programs</h3>
                             <p>Evaluating assistance effectiveness</p>
@@ -593,7 +620,7 @@
                 </div>
                 
                 <h2 class="section-title" style="margin-top: 4rem;">Where We Work</h2>
-                <p class="section-subtitle">Comparative learning across diverse contexts</p>
+                <p class="section-subtitle">Bridging continents, sharing insights, creating solutions that work across diverse contexts</p>
                 <div class="map-container">
                     <div class="location">
                         <div class="location-icon" style="background-image: url('https://cdn-icons-png.flaticon.com/512/5111/5111531.png');"></div>
@@ -629,21 +656,22 @@
         <div class="container">
             <a href="#" onclick="showPage('home')" class="back-link">← Back to Home</a>
             
-            <div class="image-banner" style="background-image: url('https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=1600&q=80'); margin-bottom: 4rem;"></div>
+                            
+                <div class="image-banner" style="background-image: url('https://images.pexels.com/photos/2255935/pexels-photo-2255935.jpeg?auto=compress&cs=tinysrgb&w=1600'); margin-bottom: 4rem;"></div>
             
             <h1 class="section-title">About the Lab</h1>
             
             <div class="image-grid" style="margin: 3rem 0;">
-                <div class="image-card" style="background-image: url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80');">
+                <div class="image-card" style="background-image: url('https://images.pexels.com/photos/1656663/pexels-photo-1656663.jpeg?auto=compress&cs=tinysrgb&w=800');">
                     <div class="image-card-overlay">
-                        <h3>Global Perspective</h3>
-                        <p>Cross-country comparative research</p>
+                        <h3>Local Food Systems</h3>
+                        <p>Understanding agricultural livelihoods</p>
                     </div>
                 </div>
-                <div class="image-card" style="background-image: url('https://images.unsplash.com/photo-1474631245212-32dc3c8310c6?w=800&q=80');">
+                <div class="image-card" style="background-image: url('https://images.pexels.com/photos/6646903/pexels-photo-6646903.jpeg?auto=compress&cs=tinysrgb&w=800');">
                     <div class="image-card-overlay">
-                        <h3>Local Knowledge</h3>
-                        <p>Understanding community needs</p>
+                        <h3>Community Resilience</h3>
+                        <p>Building food security together</p>
                     </div>
                 </div>
             </div>
@@ -652,7 +680,7 @@
                 The Human Welfare Lab is a research-to-policy lab focused on improving the effectiveness of food assistance and social protection programs for households most vulnerable to hunger and poverty. Our work sits at the intersection of food economics, nutrition, and public policy, with a commitment to generating actionable evidence for decision-makers.
             </p>
             <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;">
-                We study policies and programs such as food assistance, targeted subsidies, school feeding, emergency response, and conditional cash transfers, examining their impacts on food security, diet quality, and household financial resilience. The Lab works across Nigeria and the United States, enabling comparative learning across diverse contexts—rural and urban settings, different program delivery systems, and varied market conditions.
+                We study policies and programs such as food assistance, targeted subsidies, school feeding, emergency response, and conditional cash transfers, examining their impacts on food security, diet quality, and household financial resilience. The Lab works across Nigeria and the United States, enabling comparative learning across diverse contexts: rural and urban settings, different program delivery systems, and varied market conditions.
             </p>
             <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 3rem;">
                 We collaborate with government agencies, NGOs, and research partners to build evaluation strategies, strengthen monitoring systems, and translate findings into practical recommendations. Our approach combines rigorous causal methods with grounded program knowledge, ensuring our results are both credible and usable.
@@ -661,19 +689,22 @@
             <div class="image-banner" style="background-image: url('https://images.unsplash.com/photo-1593113598332-cd288d649433?w=1600&q=80'); height: 450px; margin: 4rem 0;"></div>
             
             <div class="image-grid" style="margin: 4rem 0;">
-                <div class="image-card" style="background-image: url('https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=800&q=80');">
+                <div class="image-card" style="background-image: url('https://images.pexels.com/photos/8466773/pexels-photo-8466773.jpeg?auto=compress&cs=tinysrgb&w=800');">
                     <div class="image-card-overlay">
                         <h3>Community Engagement</h3>
+                        <p>School feeding programs</p>
                     </div>
                 </div>
-                <div class="image-card" style="background-image: url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&q=80');">
+                <div class="image-card" style="background-image: url('https://images.pexels.com/photos/5816297/pexels-photo-5816297.jpeg?auto=compress&cs=tinysrgb&w=800');">
                     <div class="image-card-overlay">
                         <h3>Research Excellence</h3>
+                        <p>Policy analysis and evaluation</p>
                     </div>
                 </div>
-                <div class="image-card" style="background-image: url('https://images.unsplash.com/photo-1593113646773-028c64a8f1b8?w=800&q=80');">
+                <div class="image-card" style="background-image: url('https://images.pexels.com/photos/6684514/pexels-photo-6684514.jpeg?auto=compress&cs=tinysrgb&w=800');">
                     <div class="image-card-overlay">
                         <h3>Policy Impact</h3>
+                        <p>Academic collaboration and training</p>
                     </div>
                 </div>
             </div>
@@ -704,7 +735,7 @@
         <div class="container">
             <a href="#" onclick="showPage('home')" class="back-link">← Back to Home</a>
             
-            <div class="image-banner" style="background-image: url('https://images.unsplash.com/photo-1551218808-94e220e084d2?w=1600&q=80');"></div>
+            <div class="image-banner" style="background-image: url('https://images.pexels.com/photos/10188239/pexels-photo-10188239.jpeg?auto=compress&cs=tinysrgb&w=1600');"></div>
             
             <h1 class="section-title">Research Areas</h1>
             <p class="section-subtitle">Our work spans eight interconnected pillars</p>
@@ -787,7 +818,7 @@
             <h2 style="margin-top: 3rem; margin-bottom: 1.5rem; font-size: 1.5rem;">Leadership</h2>
             <div class="team-grid">
                 <div class="team-member">
-                    <div class="team-avatar">AB</div>
+                    <div class="team-avatar photo" style="background-image: url('https://i.imgur.com/sOwqLlL.jpeg');"></div>
                     <h3>Agboola Bello</h3>
                     <p class="role">Director & Founder</p>
                 </div>
@@ -796,9 +827,27 @@
             <div class="image-banner" style="background-image: url('https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?w=1600&q=80'); height: 400px; margin: 4rem 0;"></div>
             
             <h2 style="margin-top: 3rem; margin-bottom: 1.5rem; font-size: 1.5rem;">Research Team</h2>
-            <div style="padding: 2rem; background: #f9fafb; border-radius: 8px; text-align: center;">
-                <p style="color: #6b7280;">Research assistants, graduate students, and collaborators</p>
-                <p style="color: #6b7280; margin-top: 0.5rem; font-size: 0.95rem;">(Team members to be added)</p>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-avatar photo" style="background-image: url('https://i.imgur.com/PrXSuLj.jpeg');"></div>
+                    <h3>Raphael Yewande</h3>
+                    <p class="role">Research Supervisor</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-avatar">OT</div>
+                    <h3>Olujemibola Timileyin</h3>
+                    <p class="role">Research Assistant</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-avatar">MY</div>
+                    <h3>Mustapha Yusroh</h3>
+                    <p class="role">Research Assistant</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-avatar">BO</div>
+                    <h3>Boluwatife Oyibo</h3>
+                    <p class="role">Research Assistant</p>
+                </div>
             </div>
             
             <div class="image-grid" style="margin: 4rem 0;">
@@ -878,7 +927,8 @@
             <div style="max-width: 600px; margin: 2rem auto;">
                 <div style="padding: 2rem; background: #f9fafb; border-radius: 8px; margin-bottom: 2rem;">
                     <h3 style="margin-bottom: 1rem;">General Inquiries</h3>
-                    <p style="color: #6b7280; margin-bottom: 0.5rem;"><strong>Email:</strong> contact@fsspl.org</p>
+                    <p style="color: #6b7280; margin-bottom: 0.5rem;"><strong>Email:</strong> belloaagboola@gmail.com</p>
+                    <p style="color: #6b7280; margin-bottom: 0.5rem;"><strong>Phone:</strong> +1 (706) 240-4574</p>
                     <p style="color: #6b7280;"><strong>Director:</strong> Agboola Bello</p>
                 </div>
                 
@@ -890,7 +940,7 @@
                 
                 <div style="padding: 2rem; background: #f9fafb; border-radius: 8px;">
                     <h3 style="margin-bottom: 1rem;">Press Inquiries</h3>
-                    <p style="color: #6b7280;">For media requests, please contact: press@fsspl.org</p>
+                    <p style="color: #6b7280;">For media requests, please contact: belloaagboola@gmail.com</p>
                 </div>
             </div>
             
@@ -932,11 +982,12 @@
             <div class="footer-section">
                 <h4>Connect</h4>
                 <p>Newsletter Signup</p>
-                <p>contact@fsspl.org</p>
+                <p>belloaagboola@gmail.com</p>
+                <p>+1 (706) 240-4574</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Human Welfare Lab. All rights reserved.</p>
+            <p>&copy; 2024 Food Security & Social Protection Lab. All rights reserved.</p>
         </div>
     </footer>
 
