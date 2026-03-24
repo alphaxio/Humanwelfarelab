@@ -48,11 +48,40 @@
         }
 
         .logo {
-            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .logo-mark svg {
+            width: 38px;
+            height: 38px;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+
+        .logo-text-hwl {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
             font-weight: 800;
             color: var(--accent);
-            font-family: 'Playfair Display', serif;
-            letter-spacing: -0.5px;
+            letter-spacing: 2px;
+        }
+
+        .logo-text-sub {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.5rem;
+            font-weight: 600;
+            color: #9ca3af;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            margin-top: 3px;
         }
 
         h1,
@@ -63,9 +92,10 @@
         }
 
         .nav-links {
-            display: flex;
+            display: flex !important;
             gap: 2rem;
             list-style: none;
+            flex-wrap: wrap;
         }
 
         .nav-links a {
@@ -80,8 +110,8 @@
         }
 
         .hero {
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.92) 0%, rgba(96, 165, 250, 0.88) 100%),
-                url('https://images.pexels.com/photos/3401479/pexels-photo-3401479.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.75) 0%, rgba(96, 165, 250, 0.65) 100%),
+                url('https://i.imgur.com/YbSMBhl.jpeg') center/cover;
             color: white;
             padding: 8rem 2rem;
             text-align: center;
@@ -491,10 +521,6 @@
         }
 
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
             .hero h1 {
                 font-size: 1.8rem;
             }
@@ -509,7 +535,27 @@
 <body>
     <header>
         <nav>
-            <div class="logo">HWL</div>
+            <div class="logo" onclick="showPage('home')">
+                <div class="logo-mark">
+                    <svg viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Outer ring -->
+                        <circle cx="19" cy="19" r="17.5" stroke="#2563eb" stroke-width="1.2" fill="none"
+                            opacity="0.3" />
+                        <!-- Inner filled circle -->
+                        <circle cx="19" cy="19" r="11" fill="#2563eb" opacity="0.12" />
+                        <!-- Human figure - body -->
+                        <circle cx="19" cy="13" r="3.5" fill="#2563eb" />
+                        <path d="M12 28c0-3.866 3.134-7 7-7s7 3.134 7 7" stroke="#2563eb" stroke-width="2"
+                            stroke-linecap="round" fill="none" />
+                        <!-- Leaf/sprout accent -->
+                        <path d="M24 16 Q28 12 26 8 Q22 10 24 16Z" fill="#60a5fa" opacity="0.7" />
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-text-hwl">HWL</span>
+                    <span class="logo-text-sub">Human Welfare Lab</span>
+                </div>
+            </div>
             <ul class="nav-links">
                 <li><a href="#" onclick="showPage('home')">Home</a></li>
                 <li><a href="#" onclick="showPage('about')">About</a></li>
@@ -524,9 +570,9 @@
     <div id="home" class="page-content active">
         <section class="hero">
             <h1>Human Welfare Lab</h1>
-            <p>Our organization provides rigorous evidence about food assistance and social protection policies to help
-                these policies improve the protection of low-income households from hunger, poverty, and nutritional
-                risk globally and across North America.</p>
+            <p>The Human Welfare Lab was founded by an international student at UGA to bridge food security research
+                with real community action: mentoring students, reducing food insecurity, and building belonging across
+                diverse backgrounds globally and across North America.</p>
             <div class="hero-buttons">
                 <a href="#" onclick="showPage('research')" class="btn btn-primary">Explore Research</a>
                 <a href="#" onclick="showPage('partner')" class="btn btn-secondary">Partner With Us</a>
@@ -542,7 +588,7 @@
                     vulnerable</p>
 
                 <div class="image-banner"
-                    style="background-image: url('https://images.pexels.com/photos/33489786/pexels-photo-33489786.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+                    style="background-image: url('https://i.imgur.com/FghXl2g.jpeg'); background-size: contain; background-repeat: no-repeat; background-position: center; background-color: #f9fafb; height: 650px;">
                 </div>
 
                 <div class="tiles">
@@ -589,6 +635,30 @@
                         <h3>Resilience & Climate Shocks</h3>
                         <p>Build household capacity to withstand climate and conflict-related food crises</p>
                     </div>
+                    <div class="tile">
+                        <div class="tile-icon"
+                            style="background-image: url('https://cdn-icons-png.flaticon.com/512/1998/1998614.png');">
+                        </div>
+                        <h3>Student Mentoring</h3>
+                        <p>Supporting graduate and international students through academic challenges, research
+                            development, and professional growth</p>
+                    </div>
+                    <div class="tile">
+                        <div class="tile-icon"
+                            style="background-image: url('https://cdn-icons-png.flaticon.com/512/681/681494.png');">
+                        </div>
+                        <h3>Community Building</h3>
+                        <p>Creating inclusive spaces through coffee hours, wellness seminars, and cultural events that
+                            celebrate diverse backgrounds</p>
+                    </div>
+                    <div class="tile">
+                        <div class="tile-icon"
+                            style="background-image: url('https://cdn-icons-png.flaticon.com/512/3176/3176272.png');">
+                        </div>
+                        <h3>International Student Welfare</h3>
+                        <p>Helping international newcomers assimilate, find community, and thrive: drawing on lived
+                            experience and peer support</p>
+                    </div>
                 </div>
 
                 <div class="image-grid">
@@ -619,25 +689,17 @@
 
         <div class="impact-stats">
             <div class="container">
-                <div class="image-banner"
-                    style="background-image: url('https://images.pexels.com/photos/3213283/pexels-photo-3213283.jpeg?auto=compress&cs=tinysrgb&w=1600'); height: 400px; margin-bottom: 4rem;">
-                </div>
-
                 <h2 class="section-title">Our Impact</h2>
                 <p class="section-subtitle">Translating research into policy briefs, program dashboards, and decision
                     tools that create lasting change</p>
                 <div class="stats-grid">
                     <div class="stat">
-                        <div class="stat-number">2</div>
-                        <div class="stat-label">Countries</div>
+                        <div class="stat-number">12+</div>
+                        <div class="stat-label">Students Mentored</div>
                     </div>
                     <div class="stat">
                         <div class="stat-number">8</div>
                         <div class="stat-label">Research Areas</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">∞</div>
-                        <div class="stat-label">Impact Potential</div>
                     </div>
                 </div>
             </div>
@@ -645,38 +707,40 @@
 
         <div class="map-section">
             <div class="container">
-                <div class="image-grid">
-                    <div class="image-card"
-                        style="background-image: url('https://images.pexels.com/photos/14863397/pexels-photo-14863397.jpeg?auto=compress&cs=tinysrgb&w=800');">
-                        <div class="image-card-overlay">
-                            <h3>Global Markets</h3>
-                            <p>Understanding local food systems</p>
-                        </div>
-                    </div>
-                    <div class="image-card"
-                        style="background-image: url('https://images.pexels.com/photos/4968393/pexels-photo-4968393.jpeg?auto=compress&cs=tinysrgb&w=800');">
-                        <div class="image-card-overlay">
-                            <h3>North America Food Programs</h3>
-                            <p>Evaluating assistance effectiveness</p>
-                        </div>
-                    </div>
-                </div>
-
                 <h2 class="section-title" style="margin-top: 4rem;">Where We Work</h2>
                 <p class="section-subtitle">Bridging continents, sharing insights, creating solutions that work across
                     diverse contexts</p>
                 <div class="map-container">
                     <div class="location">
-                        <div class="location-icon"
-                            style="background-image: url('https://cdn-icons-png.flaticon.com/512/5111/5111531.png');">
+                        <div class="location-icon" style="display:flex; align-items:center; justify-content:center;">
+                            <svg width="60" height="60" viewBox="0 0 60 60" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="30" cy="30" r="28" stroke="#2563eb" stroke-width="1.5" fill="#eff6ff" />
+                                <ellipse cx="30" cy="30" rx="11" ry="28" stroke="#2563eb" stroke-width="1.2"
+                                    fill="none" />
+                                <line x1="2" y1="30" x2="58" y2="30" stroke="#2563eb" stroke-width="1.2" />
+                                <line x1="2" y1="20" x2="58" y2="20" stroke="#2563eb" stroke-width="0.8"
+                                    opacity="0.5" />
+                                <line x1="2" y1="40" x2="58" y2="40" stroke="#2563eb" stroke-width="0.8"
+                                    opacity="0.5" />
+                            </svg>
                         </div>
                         <h3>Global</h3>
                         <p style="color: #6b7280;">Food price volatility, poverty targeting, delivery constraints, rural
                             livelihoods</p>
                     </div>
                     <div class="location">
-                        <div class="location-icon"
-                            style="background-image: url('https://cdn-icons-png.flaticon.com/512/5111/5111594.png');">
+                        <div class="location-icon" style="display:flex; align-items:center; justify-content:center;">
+                            <svg width="70" height="70" viewBox="0 0 100 100" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="50" cy="50" r="44" stroke="#2563eb" stroke-width="4" fill="#dbeafe" />
+                                <line x1="50" y1="6" x2="50" y2="94" stroke="#2563eb" stroke-width="4"
+                                    stroke-linecap="round" />
+                                <line x1="50" y1="50" x2="12" y2="75" stroke="#2563eb" stroke-width="4"
+                                    stroke-linecap="round" />
+                                <line x1="50" y1="50" x2="88" y2="75" stroke="#2563eb" stroke-width="4"
+                                    stroke-linecap="round" />
+                            </svg>
                         </div>
                         <h3>North America</h3>
                         <p style="color: #6b7280;">SNAP/WIC policy, benefit adequacy, access barriers, diet quality</p>
@@ -713,6 +777,18 @@
                 </div>
             </div>
 
+            <h2 class="section-title" style="margin-top: 1rem;">Our Story</h2>
+            <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;">
+                The Human Welfare Lab was founded by an international student who arrived at the University of Georgia
+                in 2024 and experienced firsthand the mixture of excitement, anxiety, and culture shock that greets so
+                many newcomers. Confronted by new food, new systems, and new communities, that lived experience became
+                the seed of something larger. Rather than simply adapt, our founder set out to build: creating spaces
+                where students could hold roundtable discussions, volunteer their knowledge, address food insecurity,
+                and find genuine belonging. HWL grew out of that impulse: the belief that community is built through
+                small, inclusive acts, and that rigorous research and grassroots action are not opposites but partners.
+            </p>
+
+            <h2 class="section-title" style="margin-top: 2rem;">About the Lab</h2>
             <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;">
                 The Human Welfare Lab is a research-to-policy lab focused on improving the effectiveness of food
                 assistance and social protection programs for households most vulnerable to hunger and poverty. Our work
@@ -846,8 +922,17 @@
                     <p class="role">Research Supervisor</p>
                 </div>
                 <div class="team-member">
-                    <div class="team-avatar">OT</div>
-                    <h3>Olujemibola Timileyin</h3>
+                    <div class="team-avatar photo"
+                        style="background-image: url('https://media.licdn.com/dms/image/v2/C4D03AQF4UWgexK2jQg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1594133143987?e=1775692800&v=beta&t=Bpwdb6hwpROrJL6JhSI3MgUIg7jK1lJePtV3EuF_k-s');">
+                    </div>
+                    <h3>Joshua Amusan</h3>
+                    <p class="role">Research Supervisor</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-avatar photo"
+                        style="background-image: url('https://media.licdn.com/dms/image/v2/D4E03AQGEEagRorsiYg/profile-displayphoto-scale_400_400/B4EZy0jIMQGcAo-/0/1772555634627?e=1775692800&v=beta&t=234Qyb4f4-sNVvRvnjXRIAg-myPZX-oB-fjliKBzHUc');">
+                    </div>
+                    <h3>Temitayo Oni</h3>
                     <p class="role">Research Assistant</p>
                 </div>
                 <div class="team-member">
@@ -856,9 +941,11 @@
                     <p class="role">Research Assistant</p>
                 </div>
                 <div class="team-member">
-                    <div class="team-avatar">BO</div>
-                    <h3>Boluwatife Oyibo</h3>
-                    <p class="role">Research Assistant</p>
+                    <div class="team-avatar photo"
+                        style="background-image: url('https://media.licdn.com/dms/image/v2/D4E03AQEVOC_rYLM4PA/profile-displayphoto-scale_400_400/B4EZ0CowY2IUAg-/0/1773865734942?e=1775692800&v=beta&t=P_BLxL7i9F9RepsF7c70OC88wxVbsVOu5k7pNOL428o');">
+                    </div>
+                    <h3>Aishat Aina</h3>
+                    <p class="role">Researcher</p>
                 </div>
             </div>
 
@@ -947,26 +1034,15 @@
             <div style="max-width: 600px; margin: 2rem auto;">
                 <div style="padding: 2rem; background: #f9fafb; border-radius: 8px; margin-bottom: 2rem;">
                     <h3 style="margin-bottom: 1rem;">General Inquiries</h3>
-                    <p style="color: #6b7280; margin-bottom: 0.5rem;"><strong>Email:</strong> <a
-                            href="/cdn-cgi/l/email-protection" class="__cf_email__"
-                            data-cfemail="5331363f3f3c323234313c3c3f3213343e323a3f7d303c3e">[email&#160;protected]</a>
-                    </p>
+                    <p style="color: #6b7280; margin-bottom: 0.5rem;"><strong>Email:</strong>
+                        belloaagboola&#64;gmail.com</p>
                     <p style="color: #6b7280; margin-bottom: 0.5rem;"><strong>Phone:</strong> +1 (706) 240-4574</p>
                     <p style="color: #6b7280;"><strong>Director:</strong> Agboola Bello</p>
                 </div>
 
-                <div style="padding: 2rem; background: #f9fafb; border-radius: 8px; margin-bottom: 2rem;">
-                    <h3 style="margin-bottom: 1rem;">Locations</h3>
-                    <p style="color: #6b7280; margin-bottom: 0.5rem;">🌍 Global</p>
-                    <p style="color: #6b7280;">🌎 North America</p>
-                </div>
-
                 <div style="padding: 2rem; background: #f9fafb; border-radius: 8px;">
                     <h3 style="margin-bottom: 1rem;">Press Inquiries</h3>
-                    <p style="color: #6b7280;">For media requests, please contact: <a href="/cdn-cgi/l/email-protection"
-                            class="__cf_email__"
-                            data-cfemail="cba9aea7a7a4aaaaaca9a4a4a7aa8baca6aaa2a7e5a8a4a6">[email&#160;protected]</a>
-                    </p>
+                    <p style="color: #6b7280;">For media requests, please contact: belloaagboola&#64;gmail.com</p>
                 </div>
             </div>
         </div>
@@ -976,8 +1052,9 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h4>Human Welfare Lab</h4>
-                <p>Generating rigorous evidence on food assistance and social protection policies globally and across
-                    North America.</p>
+                <p>Founded at the University of Georgia, generating rigorous evidence on food assistance and social
+                    protection policies while building community and belonging for students globally and across North
+                    America.</p>
             </div>
             <div class="footer-section">
                 <h4>Quick Links</h4>
@@ -986,18 +1063,27 @@
                 <a href="#" onclick="showPage('people')">People</a>
                 <a href="#" onclick="showPage('partner')">Partner</a>
             </div>
-            <div class="footer-section">
-                <h4>Locations</h4>
-                <p>Global</p>
-                <p>North America</p>
-            </div>
+
             <div class="footer-section">
                 <h4>Connect</h4>
                 <p>Newsletter Signup</p>
-                <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
-                        data-cfemail="3e5c5b5252515f5f595c5151525f7e59535f5752105d5153">[email&#160;protected]</a></p>
-                <p>+1 (706) 240-4574</p>
+                <p>belloaagboola&#64;gmail.com</p>
+                <p>+1 (706) 240-4574</p </div>
             </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 Human Welfare Lab. All righ
+            <div class="footer-bottom">
+                <p>&copy; 2025 Human Welfare Lab. All rights reserved.</p>
+            </div>
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page-content').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+
+</html>
